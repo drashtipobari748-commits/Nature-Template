@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meadowlark</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Young+Serif&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+:root{--ink:#14281f;--pine:#1f4d3a;--meadow:#8fbf5a;--wheat:#e0b84a;--mist:#dff0e6}
+body{font-family:'Nunito',sans-serif;color:var(--ink);background:var(--mist);margin:0}
+h1,h2,h3,.serif{font-family:'Young Serif',serif}
+html.lc,html.lc *{cursor:none!important}
+#cd,#cr{position:fixed;left:0;top:0;pointer-events:none;z-index:9999;border-radius:50%;opacity:0}
+#cd{width:8px;height:8px;margin:-4px 0 0 -4px;background:#14281f;box-shadow:0 0 0 2px #fff}
+#cr{width:34px;height:34px;margin:-17px 0 0 -17px;border:2px solid #14281f;box-shadow:0 0 0 2px #fff,inset 0 0 0 2px #fff;transition:width .2s,height .2s,margin .2s,background .2s}
+#cr.h{width:54px;height:54px;margin:-27px 0 0 -27px;background:rgba(224,184,74,.4)}
+html.lc input{cursor:text!important}
+.sw{transform-box:fill-box;transform-origin:50% 100%;animation:sw 3s ease-in-out infinite alternate}
+.tr{animation-duration:5s}
+@keyframes sw{from{rotate:-3deg}to{rotate:4deg}}
+@media(prefers-reduced-motion:reduce){.sw{animation:none}}
+:root{--l1:#2f7a4a;--l2:#3f8f4f;--l3:#5aa85a;--tpine:#1f5a44}
+:focus-visible{outline:3px solid var(--wheat);outline-offset:3px}
+#hero{--sky1:#9fd8e8;--sky2:#fbf0b8;--sun:#f6c453;--far:#a9d6bd;--mid:#74b46b;--fld:#e0b84a;--l1:#2f7a4a;--l2:#3f8f4f;--l3:#5aa85a;--tpine:#1f5a44;--st1:#c99a2e;--st2:#e6b84a;--roof:#8a3f2e;--cl:#fff;--tx:#14281f}
+.b{padding:.35rem .75rem;border-radius:999px;transition:background .3s}
+.b[aria-pressed=true]{background:var(--pine);color:#fff}
+</style>
+</head>
+<body>
+<div id="cd"></div><div id="cr"></div>
+
+<nav class="fixed top-0 inset-x-0 z-40 flex items-center justify-between px-6 md:px-12 py-4" style="padding-top:calc(1rem + env(safe-area-inset-top,0px))">
+  <a href="#top" class="serif text-xl">Meadowlark</a>
+  <div class="flex gap-3 sm:gap-5 text-xs sm:text-sm font-extrabold"><a href="#about">About</a><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></div>
+</nav>
+
+<!-- HERO: tall wrapper, sticky landscape so the windmill stays in view while scrolling -->
+<header id="top" class="relative" style="height:240vh">
+  <div class="sticky top-0 h-screen overflow-hidden" id="hero">
+    <svg class="absolute inset-0 w-full h-full" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--sky1)"/><stop offset=".7" style="stop-color:var(--sky2)"/></linearGradient>
+        <symbol id="tree" viewBox="0 0 100 140"><rect x="44" y="80" width="12" height="60" rx="4" fill="#6b4a3a"/><circle cx="50" cy="50" r="38" style="fill:var(--l1)"/><circle cx="30" cy="65" r="24" style="fill:var(--l2)"/><circle cx="72" cy="62" r="26" style="fill:var(--l2)"/><circle cx="52" cy="34" r="20" style="fill:var(--l3)"/></symbol>
+        <symbol id="pine" viewBox="0 0 80 150"><rect x="35" y="110" width="10" height="40" fill="#6b4a3a"/><path d="M40 4L68 52H12zM40 30L74 86H6zM40 60L78 118H2z" style="fill:var(--tpine)"/></symbol>
+        <g id="blade"><rect x="1246" y="270" width="8" height="200" fill="#5a3b2b"/><rect x="1254" y="276" width="48" height="122" fill="#fbf6e6" stroke="#5a3b2b" stroke-width="3"/><path d="M1254 316h48M1254 356h48" stroke="#5a3b2b" stroke-width="2"/></g>
+      </defs>
+      <rect width="1600" height="900" fill="url(#sky)"/>
+      <circle cx="1020" cy="220" r="70" style="fill:var(--sun)"/><circle cx="1020" cy="220" r="96" style="fill:var(--sun)" opacity=".25"/>
+      <path d="M150 150q30-26 70-8q36-20 66 6q40-4 46 22H120q-8-14 30-20z" fill="#fff" opacity=".8"/>
+      <path d="M0 640Q300 520 620 620T1200 600T1600 590V900H0Z" style="fill:var(--far)"/>
+      <path d="M0 720Q400 630 800 700T1600 680V900H0Z" style="fill:var(--mid)"/>
+      <!-- windmill -->
+      <path d="M1200 770L1225 470h50l25 300z" fill="#f1e6c8" stroke="#5a3b2b" stroke-width="3"/>
+      <path d="M1218 470Q1250 420 1282 470z" style="fill:var(--roof)"/>
+      <rect x="1236" y="700" width="28" height="70" rx="14" fill="#8a3f2e"/>
+      <g id="rotor"><use href="#blade"/><use href="#blade" transform="rotate(90 1250 470)"/><use href="#blade" transform="rotate(180 1250 470)"/><use href="#blade" transform="rotate(270 1250 470)"/><circle cx="1250" cy="470" r="14" fill="#5a3b2b"/></g>
+      <path d="M0 790Q800 740 1600 780V900H0Z" style="fill:var(--fld)"/>
+      <g id="field"></g>
+      <path id="drift" d="M0 835Q200 795 420 830T820 822T1220 834T1600 815V900H0Z" fill="#fff" transform="translate(0 130)"/>
+    </svg>
+
+    <div id="clouds" class="absolute inset-0 z-[6] pointer-events-none overflow-hidden"></div>
+    <div id="wx" class="absolute inset-0 z-[7] pointer-events-none" style="background:#2a3946;opacity:0"></div>
+    <div id="leaves" class="absolute inset-0 z-20 pointer-events-none overflow-hidden"></div>
+    <div id="fl" class="absolute inset-0 z-[25] pointer-events-none bg-white" style="opacity:0"></div>
+    <div id="pj" class="absolute inset-0 z-[15] pointer-events-none overflow-hidden"></div>
+
+    <div class="relative z-10 h-full flex flex-col justify-center px-6 md:px-12 max-w-2xl" style="color:var(--tx)">
+      <h1 class="hl serif text-5xl md:text-7xl leading-[1.02]">Grow something good, in any season.</h1>
+      <p class="hl mt-5 text-lg md:text-xl max-w-md font-semibold">An illustrated template for studios, shops, retreats, blogs and events. Swap the words, keep the weather.</p>
+      <div class="hl mt-8 flex flex-wrap gap-3">
+        <a href="#pricing" class="bg-[var(--pine)] ring-2 ring-white/70 text-white font-extrabold px-6 py-3 rounded-[1.5rem_.4rem_1.5rem_.4rem]">Get started</a>
+        <a href="#features" class="bg-white/70 text-[#14281f] font-extrabold px-6 py-3 rounded-[.4rem_1.5rem_.4rem_1.5rem]">See what is inside</a>
+      </div>
+    </div>
+    <p class="absolute z-10 bottom-28 sm:bottom-20 right-6 text-sm font-extrabold" style="color:var(--tx)">Scroll to turn the windmill</p>
+  </div>
+</header>
+
+<section id="about" class="bg-[var(--pine)] text-[#eef6df] px-6 md:px-12 py-24">
+  <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-end">
+    <div>
+      <h2 class="serif text-4xl md:text-5xl leading-tight">A calm starting point for any project.</h2>
+      <p class="mt-6 text-lg leading-relaxed max-w-md">Meadowlark is a reusable, illustrated template. Use it for a studio, a shop, a retreat, a newsletter or an event. Replace the words, keep the seasons, and the landscape does the rest.</p>
+    </div>
+    <svg viewBox="0 0 400 200" class="w-full" aria-hidden="true" style="--l1:#4f9a55;--l2:#6cb865;--l3:#9bd06f;--tpine:#5fa985"><path d="M0 190h400" stroke="#8fbf5a" stroke-width="4"/>
+      <use href="#tree" x="10" y="38" width="110" height="154" class="sw tr"/><use href="#pine" x="140" y="58" width="70" height="134" class="sw tr" style="animation-delay:-2s"/><use href="#tree" x="220" y="80" width="80" height="112" class="sw tr" style="animation-delay:-1s"/><use href="#pine" x="310" y="42" width="80" height="150" class="sw tr" style="animation-delay:-3s"/></svg>
+  </div>
+</section>
+
+<section id="features" class="px-6 md:px-12 py-24"><div class="max-w-5xl mx-auto">
+  <h2 class="serif text-4xl md:text-5xl">What is included</h2>
+  <p class="mt-4 text-lg max-w-lg">Everything on this page is plain HTML. Edit it, reorder it or delete it.</p>
+  <div id="feat" class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div></div></section>
+
+<section id="seasons" class="bg-[#f4efc6] px-6 md:px-12 py-24"><div class="max-w-5xl mx-auto">
+  <h2 class="serif text-4xl md:text-5xl">Four moods, one page</h2>
+  <p class="mt-4 text-lg max-w-lg">Pick a card to change the landscape at the top.</p>
+  <div class="mt-12 grid sm:grid-cols-2 gap-6" id="cards"></div></div></section>
+
+<section id="showcase" class="px-6 md:px-12 py-24"><div class="max-w-5xl mx-auto">
+  <h2 class="serif text-4xl md:text-5xl">Ideas to start from</h2>
+  <div id="shots" class="mt-12 grid grid-cols-2 lg:grid-cols-3 gap-6"></div></div></section>
+
+<section id="process" class="bg-[var(--pine)] text-[#eef6df] px-6 md:px-12 py-24"><div class="max-w-3xl mx-auto">
+  <h2 class="serif text-4xl md:text-5xl">From idea to launch</h2>
+  <ol id="steps" class="mt-12 space-y-8"></ol></div></section>
+
+<section id="voices" class="px-6 md:px-12 py-24"><div class="max-w-5xl mx-auto">
+  <h2 class="serif text-4xl md:text-5xl">Kind words</h2>
+  <div id="quotes" class="mt-12 grid md:grid-cols-3 gap-6"></div></div></section>
+
+<section id="pricing" class="bg-[#f4efc6] px-6 md:px-12 py-24"><div class="max-w-5xl mx-auto">
+  <h2 class="serif text-4xl md:text-5xl">Simple plans</h2>
+  <div id="plans" class="mt-12 grid md:grid-cols-3 gap-6 items-start"></div></div></section>
+
+<section id="faq" class="px-6 md:px-12 pt-24 pb-40"><div class="max-w-3xl mx-auto">
+  <h2 class="serif text-4xl md:text-5xl">Questions</h2>
+  <div class="mt-10 border-t border-[var(--pine)]/25">
+    <details class="border-b border-[var(--pine)]/25 py-4"><summary class="serif text-xl cursor-pointer">Can I use this for something other than nature?</summary><p class="mt-2 max-w-xl">Yes. The landscape is only the backdrop. Change the words and sections for any project.</p></details>
+    <details class="border-b border-[var(--pine)]/25 py-4"><summary class="serif text-xl cursor-pointer">How do I change the colors?</summary><p class="mt-2 max-w-xl">Each season is one entry in the S object in the script. Edit its hex values and the scene updates.</p></details>
+    <details class="border-b border-[var(--pine)]/25 py-4"><summary class="serif text-xl cursor-pointer">Do the effects stay in the hero?</summary><p class="mt-2 max-w-xl">Yes. Weather, snow and lightning only appear in the landscape at the top.</p></details>
+    <details class="border-b border-[var(--pine)]/25 py-4"><summary class="serif text-xl cursor-pointer">Can I remove the season and weather panel?</summary><p class="mt-2 max-w-xl">Delete the element with id ctl. The page then stays in summer with clear weather.</p></details>
+  </div></div></section>
+
+<div id="ctl" class="fixed z-50 left-1/2 -translate-x-1/2 flex flex-col sm:flex-row gap-1 sm:gap-3 bg-white/85 backdrop-blur p-2 rounded-[1.5rem_.5rem_1.5rem_.5rem] text-sm font-extrabold text-[#14281f]" style="bottom:calc(1rem + env(safe-area-inset-bottom,0px))"><div id="gs" role="group" aria-label="Season" class="flex gap-1"></div><div id="gw" role="group" aria-label="Weather" class="flex gap-1 flex-wrap"></div></div>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.bundle.min.js" defer></script>
+<script>
+addEventListener('DOMContentLoaded',()=>{
+const R=gsap.utils.random, reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const leafSvg=c=>`<svg viewBox="0 0 24 24" width="30" height="30"><path d="M2 22C2 10 10 2 22 2c0 12-8 20-20 20z" fill="${c}" stroke="#14281f" stroke-width="1.4" stroke-linejoin="round"/><path d="M2 22L15 9" stroke="#14281f" stroke-width="1.4" stroke-linecap="round"/></svg>`;
+
+// swaying wheat
+const cols=['var(--st1)','var(--st2)','var(--st1)','var(--st2)'],f=document.getElementById('field');let s='';
+Array.from({length:230},()=>({x:R(-20,1620),y:R(795,900)})).sort((a,b)=>a.y-b.y).forEach(p=>{const h=R(55,100),c=cols[Math.floor(R(0,4))];
+ s+=`<g class="sw" style="animation-duration:${R(2.2,4)}s;animation-delay:${-R(0,4)}s"><path d="M${p.x} ${p.y}q6-${h/2} 2-${h}" style="stroke:${c}" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="${p.x+2}" cy="${p.y-h-8}" rx="4" ry="11" style="fill:${c}"/></g>`});
+f.innerHTML=s;
+
+// leaves blowing in from the left
+const box=document.getElementById('leaves'),pal=['#3f8f4f','#8fbf5a','#e6a23c','#c8553d','#2f6b4a'];
+let wind=1;function fly(el,first){const w=innerWidth,x0=first?R(-40,w*.3):-50;
+ el.style.top=R(6,84)+'vh';
+ gsap.fromTo(el,{x:x0},{x:w+60,duration:R(9,17)*(w-x0)/w,ease:'none',onComplete:()=>fly(el,false)}).timeScale(wind);}
+for(let i=0;i<(reduce?6:24);i++){const el=document.createElement('div');el.className='absolute left-0';el.innerHTML=leafSvg(pal[i%5]);box.appendChild(el);
+ fly(el,true);if(!reduce)gsap.fromTo(el.firstChild,{y:0,rotation:R(0,360)},{y:R(30,90),rotation:'+='+R(-220,220),duration:R(1.4,3),yoyo:true,repeat:-1,ease:'sine.inOut'});}
+
+// windmill: spins only while scrolling, eases to rest
+let last=scrollY,target=0,speed=0,rot=0,t;
+addEventListener('scroll',()=>{const d=Math.abs(scrollY-last);last=scrollY;target=Math.min(d*.9,18);clearTimeout(t);t=setTimeout(()=>target=0,90)},{passive:true});
+gsap.ticker.add(()=>{speed+=(target-speed)*.08;if(speed<.01&&!target)return;rot+=speed;gsap.set('#rotor',{rotation:rot,svgOrigin:'1250 470'})});
+
+// season cards
+const seasons=[['Spring','#b9dd8a','#3f8f4f','Fresh starts, new launches and light green.'],['Summer','#f0c94f','#c99a2e','Long days, busy pages and warm gold.'],['Autumn','#e58a4c','#c8553d','Harvest time. Rich colors and steady work.'],['Winter','#cfe3ee','#5f8ea8','Quiet, focused and covered in snow.']];
+document.getElementById('cards').innerHTML=seasons.map(([n,bg,lc,tx],i)=>`<button data-card="${n.toLowerCase()}" class="text-left p-8 ${i%2?'rounded-[.6rem_2.5rem_.6rem_2.5rem]':'rounded-[2.5rem_.6rem_2.5rem_.6rem]'} transition-transform hover:-rotate-1" style="background:${bg}">${leafSvg(lc)}<h3 class="serif text-3xl mt-4">${n}</h3><p class="mt-2 font-semibold">${tx}</p></button>`).join('');
+document.querySelectorAll('[data-card]').forEach(b=>b.onclick=()=>{se=b.dataset.card;sync();apply();setP();scrollTo({top:0,behavior:'smooth'})});
+const H=(id,a,fn)=>document.getElementById(id).innerHTML=a.map(fn).join(''),rd=i=>i%2?'rounded-[.5rem_2rem_.5rem_2rem]':'rounded-[2rem_.5rem_2rem_.5rem]';
+H('feat',[['Illustrated landscape','A hand-drawn SVG scene you can recolor with a few variables.'],['Season toggle','Four moods with matching palettes and falling particles.'],['Weather effects','Clouds, rain, storm and wind, kept inside the hero.'],['Scroll motion','The windmill turns only while the page is moving.'],['Custom pointer','A precise dot and ring that never blends into the art.'],['Ready-made sections','Features, gallery, steps, quotes, pricing and questions.']],([t,x],i)=>`<div class="bg-white/70 p-7 ${rd(i)}">${leafSvg(pal[i%5])}<h3 class="serif text-2xl mt-3">${t}</h3><p class="mt-2">${x}</p></div>`);
+H('shots',[['#9fd8e8','#74b46b','#2f7a4a','Studio site'],['#f3c9a0','#c9823e','#8a3f2e','Farm shop'],['#bfe8e0','#86c477','#4f9a55','Wellness retreat'],['#34506f','#d3e0ea','#5f8f86','Winter market'],['#fbe4b8','#e0b84a','#c8553d','Harvest festival'],['#cfe3ee','#a9d6bd','#3f8f4f','Nature journal']],([a,b,c,n])=>`<figure><svg viewBox="0 0 200 130" class="w-full rounded-[1.5rem_.4rem_1.5rem_.4rem]" role="img" aria-label="${n}"><rect width="200" height="130" fill="${a}"/><circle cx="150" cy="36" r="16" fill="#fff" opacity=".7"/><path d="M0 90Q60 50 120 84T200 70V130H0Z" fill="${b}"/><path d="M0 110Q80 84 200 106V130H0Z" fill="${c}"/></svg><figcaption class="mt-2 font-extrabold">${n}</figcaption></figure>`);
+H('steps',[['Plant','Pick a goal and a name. Replace the placeholder text.'],['Tend','Add your own sections, photos and colors.'],['Grow','Publish the page and share the link.'],['Harvest','See what people use and keep what works.']],([t,x],i)=>`<li class="flex gap-5"><span class="serif text-3xl w-10 shrink-0">${i+1}</span><div><h3 class="serif text-2xl">${t}</h3><p class="mt-1 max-w-md">${x}</p></div></li>`);
+H('quotes',[['It felt calm, so people stayed longer.','Ana, ceramics studio'],['We swapped the copy in an afternoon.','Marcus, community garden'],['Everyone remembers the seasons toggle.','Priya, tea shop']],([q,n],i)=>`<blockquote class="bg-white/70 p-7 ${rd(i)}"><p class="serif text-xl">“${q}”</p><footer class="mt-4 font-extrabold">${n}</footer></blockquote>`);
+H('plans',[['Seed','Free','For a first page',['One page','All four seasons','Basic weather']],['Sprout','$12/mo','For small projects',['Up to 10 pages','Custom colors','Contact form']],['Grove','$39/mo','For teams',['Unlimited pages','Extra sections','Priority help']]],([n,pr,d,l],i)=>`<div class="p-8 ${i==1?'bg-[var(--pine)] text-white':'bg-white/80'} ${rd(i+1)}"><h3 class="serif text-3xl">${n}</h3><p class="mt-1 opacity-80">${d}</p><p class="serif text-4xl mt-4">${pr}</p><ul class="mt-4 space-y-1 font-semibold">${l.map(x=>`<li>${x}</li>`).join('')}</ul><a href="#top" class="mt-6 inline-block font-extrabold px-5 py-2 rounded-full ${i==1?'bg-[var(--wheat)] text-[#14281f]':'bg-[var(--pine)] text-white'}">Choose ${n}</a></div>`);
+
+gsap.from('.hl',{y:30,opacity:0,duration:.9,stagger:.12,ease:'power3.out'});
+
+// seasons + weather
+const S={
+spring:{sky1:'#bfe8e0',sky2:'#f6f0d0',sun:'#f6d060',far:'#b4dcbf',mid:'#86c477',fld:'#a9d15a',l1:'#4f9a55',l2:'#6cb865',l3:'#f2b5c8',pine:'#2a6b4c',st1:'#7ec04a',st2:'#a0d45e',roof:'#8a3f2e',lv:['#8fbf5a','#f2a7bd','#b9dd8a','#3f8f4f']},
+summer:{sky1:'#9fd8e8',sky2:'#fbf0b8',sun:'#f6c453',far:'#a9d6bd',mid:'#74b46b',fld:'#e0b84a',l1:'#2f7a4a',l2:'#3f8f4f',l3:'#5aa85a',pine:'#1f5a44',st1:'#c99a2e',st2:'#e6b84a',roof:'#8a3f2e',lv:['#3f8f4f','#8fbf5a','#e6a23c','#2f6b4a']},
+autumn:{sky1:'#f3c9a0',sky2:'#fbe4b8',sun:'#f08a3c',far:'#d9a86c',mid:'#c9823e',fld:'#b9642e',l1:'#c8553d',l2:'#e08a3c',l3:'#e6b84a',pine:'#2a5a44',st1:'#a5541f',st2:'#d08a38',roof:'#7a3324',lv:['#e58a4c','#c8553d','#e6b84a','#a5541f']},
+winter:{sky1:'#34506f',sky2:'#7f9dbb',sun:'#e9edf2',far:'#9fb4c8',mid:'#d3e0ea',fld:'#f2f7fb',l1:'#dbe8ee',l2:'#eaf2f5',l3:'#ffffff',pine:'#5f8f86',st1:'#dfe8ee',st2:'#ffffff',roof:'#f4f8fa',lv:['#c9d8e6']}};
+const W={clear:{o:0,cl:'#ffffff',tx:'#14281f'},cloudy:{o:.28,cl:'#eef2f5',tx:'#14281f'},rainy:{o:.45,cl:'#8d9aa6',tx:'#ffffff'},stormy:{o:.62,cl:'#4d5966',tx:'#ffffff'},windy:{o:0,cl:'#ffffff',tx:'#14281f'}};
+let se='summer',we='clear',fl;
+const cbox=document.getElementById('clouds'),clouds=[],cd=[];
+for(let i=0;i<6;i++){const c=document.createElement('div');c.className='absolute left-0';c.style.top=R(3,24)+'vh';c.style.opacity=i<2?.9:0;
+ c.innerHTML=`<svg viewBox="0 0 200 80" width="${R(180,300)}"><g style="fill:var(--cl)"><ellipse cx="60" cy="50" rx="50" ry="26"/><ellipse cx="110" cy="34" rx="44" ry="30"/><ellipse cx="150" cy="52" rx="44" ry="24"/></g></svg>`;
+ cbox.appendChild(c);clouds.push(c);cd.push(gsap.fromTo(c,{x:-320},{x:innerWidth,duration:R(60,120),ease:'none',repeat:-1}).progress(R(0,1)));}
+let pc,tk=0;
+function pcfg(){
+ const storm=we=='stormy',rain=we=='rainy'||storm,wd=we=='windy'?2.5:1,k=reduce?.3:1;
+ let o={spring:{n:45,c:['#f7b6c8','#ffffff','#fbd3df'],sz:[3,6],sp:[.8,1.8],d:'bottomRight'},
+  summer:{n:40,c:['#fff2a8','#ffe680'],sz:[1.5,4],sp:[.2,.7],d:'none',tw:1},
+  autumn:{n:55,c:['#e58a4c','#c8553d','#e6b84a'],sh:'triangle',sz:[3,7],sp:[1.2,2.6],d:'bottomRight'},
+  winter:{n:80,c:'#ffffff',sz:[2,5],sp:[.7,1.6],d:'bottom',st:1}}[se];
+ if(rain){if(se=='winter'){o.n=storm?200:130;o.sp=storm?[2.5,4]:[1.2,2.2];o.d=storm?'bottomLeft':'bottom'}
+  else o={n:storm?320:220,c:'#dbeaf5',sh:'line',sz:[5,9],sp:storm?[22,30]:[16,22],d:storm?'bottomLeft':'bottom',ln:1}}
+ return{fullScreen:{enable:false},background:{color:'transparent'},fpsLimit:60,detectRetina:true,
+  interactivity:{events:{onHover:{enable:false},onClick:{enable:false}}},
+  particles:{number:{value:Math.round(o.n*k),density:{enable:false}},color:{value:o.c},shape:{type:o.sh||'circle'},
+   opacity:{value:o.ln?{min:.35,max:.6}:o.st?1:{min:.5,max:.9},animation:{enable:!!o.tw,speed:.8,minimumValue:.1,sync:false}},
+   size:{value:{min:o.sz[0],max:o.sz[1]}},
+   stroke:{width:o.st?1:o.ln?2:0,color:{value:o.ln?'#dbeaf5':'#5d7c99'}},
+   ...(o.ln?{rotate:{path:true}}:{}),
+   move:{enable:true,direction:wd>1&&o.d=='bottom'?'bottomRight':o.d,speed:{min:o.sp[0]*wd,max:o.sp[1]*wd},straight:!o.tw,random:!!o.tw,outModes:{default:'out'}}}}}
+async function setP(){const t=++tk;if(pc){pc.destroy();pc=null}const c=await tsParticles.load('pj',pcfg());if(t==tk)pc=c;else if(c)c.destroy()}
+function apply(){const a=S[se],w=W[we],win=se=='winter';
+ gsap.to('#hero',{'--sky1':a.sky1,'--sky2':a.sky2,'--sun':a.sun,'--far':a.far,'--mid':a.mid,'--fld':a.fld,'--l1':a.l1,'--l2':a.l2,'--l3':a.l3,'--tpine':a.pine,'--st1':a.st1,'--st2':a.st2,'--roof':a.roof,'--cl':w.cl,'--tx':win?'#ffffff':w.tx,duration:1.4});
+  gsap.to('#field',{scaleY:win?.3:1,svgOrigin:'800 900',duration:1.6});
+ gsap.to('#drift',{y:win?0:130,duration:1.8});
+ gsap.to('#wx',{opacity:w.o,duration:1.2});
+ gsap.to(box,{opacity:win?0:1,duration:1});
+ box.querySelectorAll('svg>path:first-of-type').forEach((p,i)=>gsap.to(p,{fill:a.lv[i%a.lv.length],duration:1.2}));
+ clouds.forEach((c,i)=>gsap.to(c,{opacity:(we=='clear'||we=='windy')?(i<2?.9:0):.95,duration:1.2}));
+ wind=we=='windy'?2.5:1;cd.forEach(t=>t.timeScale(wind*.5));
+ [...box.children].forEach(el=>gsap.getTweensOf(el).forEach(t=>t.timeScale(wind)));
+ clearInterval(fl);if(we=='stormy'&&!reduce)fl=setInterval(()=>gsap.timeline().to('#fl',{opacity:.8,duration:.05}).to('#fl',{opacity:0,duration:.1}).to('#fl',{opacity:.6,duration:.05}).to('#fl',{opacity:0,duration:.4}),R(3000,6000));}
+const sync=()=>document.querySelectorAll('#ctl button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.se?b.dataset.se==se:b.dataset.we==we));
+const mk=(id,o,k)=>{const g=document.getElementById(id);o.forEach(([v,l])=>{const b=document.createElement('button');b.className='b';b.textContent=l;b.dataset[k]=v;b.onclick=()=>{k=='se'?se=v:we=v;sync();apply();setP()};g.appendChild(b)})};
+mk('gs',[['spring','Spring'],['summer','Summer'],['autumn','Autumn'],['winter','Winter']],'se');
+mk('gw',[['clear','Clear'],['cloudy','Cloudy'],['rainy','Rainy'],['stormy','Stormy'],['windy','Windy']],'we');
+sync();setP();
+
+const nav=document.querySelector('nav'),secs=[...document.querySelectorAll('section')],hd=document.getElementById('hero');
+gsap.ticker.add(()=>{const y=28;let c;if(hd.parentElement.getBoundingClientRect().bottom>y)c=getComputedStyle(hd).getPropertyValue('--tx');
+ else{const e=secs.find(e=>{const b=e.getBoundingClientRect();return b.top<=y&&b.bottom>y});c=e&&e.className.includes('bg-[var(--pine)]')?'#eef6df':'#14281f'}nav.style.color=c});
+// custom pointer: exact dot + trailing ring that grows over links and buttons
+if(matchMedia('(hover:hover)').matches){const d=document.getElementById('cd'),g=document.getElementById('cr'),dx=gsap.quickTo(d,'x',{duration:.03}),dy=gsap.quickTo(d,'y',{duration:.03}),gx=gsap.quickTo(g,'x',{duration:.25}),gy=gsap.quickTo(g,'y',{duration:.25});let f=1;
+ addEventListener('mousemove',e=>{if(f){gsap.set([d,g],{x:e.clientX,y:e.clientY});f=0}
+  document.documentElement.classList.add('lc');const t=e.target;d.style.opacity=g.style.opacity=t.closest('input')?0:1;
+  g.classList.toggle('h',!!t.closest('a,button'));dx(e.clientX);dy(e.clientY);gx(e.clientX);gy(e.clientY)});
+ document.addEventListener('mouseleave',()=>d.style.opacity=g.style.opacity=0);}
+});
+</script>
+</body>
+</html>
